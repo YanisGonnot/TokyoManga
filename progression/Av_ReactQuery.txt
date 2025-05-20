@@ -1,0 +1,81 @@
+import { useState, useEffect } from 'react'
+
+import '../src/Home/Home.css'
+import '../src/main.css'
+import { Manga } from '../src/data/manga.ts'
+import MangaCard from '../src/Home/MangaCard.tsx'
+import Page from '../src/utils/pagination.tsx';
+
+//Liste brute
+/*
+import jujutsuKaisenImg from '../assets/anime1/1.png'
+import spyXFamilyImg from '../assets/anime1/2.png'
+import blueLockImg from '../assets/anime1/3.png'
+import chainsawManImg from '../assets/anime1/4.png'
+import mobPsychoImg from '../assets/anime1/5.png'
+import myHeroAcademiaImg from '../assets/anime2/1.png'
+import bleachImg from '../assets/anime2/2.png'
+import pokemonImg from '../assets/anime2/3.png'
+import cyberpunkImg from '../assets/anime2/4.png'
+import kurokoNoBasketImg from '../assets/anime2/5.png'
+
+const cardData = [
+  { title: 'JUJUTSU KAISEN', imgPath: jujutsuKaisenImg },
+  { title: 'SPY X FAMILY', imgPath: spyXFamilyImg },
+  { title: 'BLUE LOCK', imgPath: blueLockImg },
+  { title: 'CHAINSAW MAN', imgPath: chainsawManImg },
+  { title: 'MOB PSYCHO 100', imgPath: mobPsychoImg },
+  { title: 'MY HERO ACADEMIA', imgPath: myHeroAcademiaImg },
+  { title: 'BLEACH', imgPath: bleachImg },
+  { title: 'POKEMON', imgPath: pokemonImg },
+  { title: 'CYBERPUNK', imgPath: cyberpunkImg },
+  { title: 'KUROKO NO BASKET', imgPath: kurokoNoBasketImg },
+];
+*/ 
+
+
+
+const HomeScreenLegacy = () => {
+
+  //liste via API
+  const [mangalist, setMangaList] = useState<Manga[]>([]); // init de la liste à vide avant appel api
+  const [pageNumber, setPageNumber] = useState(1);
+  const [totalCountManga, setTotalCountManga] = useState(0)
+
+  const countMangaOnPage = 25 // choix arbitraire
+
+
+  useEffect(() => {
+    fetch(`https://api.jikan.moe/v4/manga?page=${pageNumber}`)
+      .then((response) => response)
+      .then((body) => body.json())
+      .then((bodyJSON) => {
+        setTotalCountManga(bodyJSON.pagination.items.total);
+        setPageNumber(bodyJSON.pagination.current_page);
+        setMangaList(bodyJSON.data)
+      })
+      .catch((error) => {
+        console.error('There was a problem with the fetch operation:', error);
+      })
+  }, [pageNumber]);
+
+  const listCards = mangalist.map(card =>
+    <MangaCard id={card.mal_id} title={card.title} imgUrl={card.images.jpg.image_url} />
+  );
+
+  return (
+    <>
+      <div className='homeBackgroundWrapper'>
+        <div className='shadowBgWrapper'>
+          <Page pageNumber={pageNumber} totalMangas={totalCountManga} countMangaOnPage={countMangaOnPage} 
+          setPageNumber={setPageNumber}
+          />
+          <div className="cards">
+            {listCards}
+          </div>
+
+        </div>
+      </div>
+    </>
+  )
+}

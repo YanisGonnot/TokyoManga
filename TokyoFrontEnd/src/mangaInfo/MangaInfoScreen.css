@@ -1,0 +1,91 @@
+.mangaInfoLayout{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;  
+    
+    z-index: 2;
+    padding: 20px 40px;
+}
+
+.mangaResume{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    padding-right: 30px;
+    width: 60dvw;
+}
+
+.stars{
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.mangaTitle{
+    font-family: 'Oswald';
+    font-size: 64px;
+    font-weight: 700;
+    color: rgb(243, 175, 49);
+    padding: 30px 15px;
+}
+
+
+.mangaSynopsis{
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 18px;
+    padding: 10px 0px 10px 20px;
+}
+
+
+.infoNotFind{
+    font-family: 'Poppins';
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+}
+
+.mangaInfos{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: start;
+    gap: 30px;
+    width: 40dvw;
+    margin-left: 40px;
+}
+
+.titles{
+    font-family: 'Poppins';
+    font-size: 22px;
+    font-weight: bold;
+    color: rgb(17, 255, 76);
+    margin-bottom: -20px;
+}
+
+
+.typeAndThemes{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+}
+
+
+.mangaThemes{
+    display: flex;
+    align-items: start;
+    gap: 30px;
+}
+
+
+.mangaAuthors{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+}
+

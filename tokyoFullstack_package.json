@@ -1,0 +1,6 @@
+{
+    "name": "TokyoAnimeManga-fullstack-app",
+    "private": true,
+    "workspaces": ["TokyoBackEnd", "TokyoFrontEnd"]
+  }
+  

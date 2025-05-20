@@ -1,0 +1,19 @@
+.homeBackgroundWrapper{
+  background-image: url("../assets/bg.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.cards{
+  display: grid;
+  grid-template-columns: repeat(5, minmax(200px, 1fr));
+  padding: 10dvh;
+  gap: 5dvh;
+}
+
+
+.infiniteScrollText{
+  font-size: 18px;
+  color: blue;
+  margin-left: 100px;
+}

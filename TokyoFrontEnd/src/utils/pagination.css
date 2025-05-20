@@ -1,0 +1,42 @@
+.pageSection{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    font-family: 'Poppins';
+    font-size: 20px;
+    gap: 20px;
+    padding: 20px;
+    
+}
+
+
+.symbolText {
+    visibility: hidden;
+    color: #fff;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 125%; /* au-dessus du symbol */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+}
+
+.movePage{
+    text-decoration: none;
+}
+
+.movePage:hover{
+    color: red;
+}
+
+
+.movePage:hover .symbolText{
+    visibility: visible;
+    opacity: 1;
+}
+
+

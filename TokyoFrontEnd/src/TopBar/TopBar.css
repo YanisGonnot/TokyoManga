@@ -1,0 +1,50 @@
+.topBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: 0%;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    padding: 0 40px;
+    
+  }
+  
+.navBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 64px;
+}
+  
+.screen{
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    color: #F8F7F9;
+    text-decoration: none;
+}
+  
+.screen:hover {
+    filter: drop-shadow(0 0 2em #acb0f2aa);
+    color: blue;
+}
+  
+.titleBar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.title{
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #FEFEFE;
+    text-decoration: none;
+}
+
+.title:hover{
+    filter: drop-shadow(0 0 2em #acb0f2aa);
+    color: blue;
+}

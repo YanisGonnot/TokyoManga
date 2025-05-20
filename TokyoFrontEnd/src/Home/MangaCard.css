@@ -1,0 +1,26 @@
+.cardItem{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1dvh;
+   
+  }
+
+  .cardImg{
+    height: 300px;
+  }
+  
+  .cardTitle{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    padding-top: 5px;
+    text-transform: uppercase;
+    color: white;
+  }

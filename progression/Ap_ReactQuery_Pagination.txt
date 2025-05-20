@@ -1,0 +1,67 @@
+import { useState } from 'react'
+import { useQuery, keepPreviousData } from '@tanstack/react-query'
+
+import './Home.css'
+import '../main.css'
+import MangaCard from './MangaCard.tsx'
+import Page from '../utils/pagination.tsx';
+import { getMangasAndPagination } from '../network/getMangas.ts'
+
+
+
+const HomeScreen = () => {
+
+  const countMangaOnPage = 25 // choix arbitraire
+  const [pageNumber, setPageNumber] = useState(1);
+
+
+  //Après pagination
+  const { isPending, isError, error, data, isFetching, isPlaceholderData } =
+    useQuery({
+      queryKey: ['MANGAS', pageNumber],
+      queryFn: () => getMangasAndPagination(pageNumber),
+      placeholderData: keepPreviousData,
+    })
+
+  let contenu : React.ReactNode; 
+  let statusText = "" 
+  if (isPending) statusText = "Loading ..."
+  else if (isError) statusText = JSON.stringify(error);
+    
+  if (statusText != ""){
+    contenu = <h1> {statusText} </h1>
+  }
+  else {
+    const listCards = data!.data.map(card =>
+      <MangaCard id={card.mal_id} title={card.title} imgUrl={card.images.jpg.image_url} key={card.mal_id} />
+    );
+
+    const hasNextPage = data!.pagination.has_next_page;
+
+    const TotalCountManga = data!.pagination.items.total;
+
+    contenu = (
+      <>
+        <Page pageNumber={pageNumber} totalMangas={totalCountManga} countMangaOnPage={countMangaOnPage} 
+          setPageNumber={setPageNumber} hasNextPage={hasNextPage} isPlaceholderData={isPlaceholderData} />
+    
+        <div className="cards">
+          {listCards}
+        </div>
+      </>
+    )
+  }
+  
+
+  return (
+    <>
+      <div className='homeBackgroundWrapper'>
+        <div className='shadowBgWrapper'>
+          {contenu}
+        </div>
+      </div>
+    </>
+  )
+}
+
+export default HomeScreen
