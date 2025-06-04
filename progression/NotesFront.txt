@@ -1,15 +1,3 @@
-npm run dev
-
-- gérer le responsive par @query
-- bg sur le wrapper de l'app et non de la page
-
-*1 appel API
-*2 pagination Gmail à faire
-*3 nav route-dom
-*4 autres pages à faire
-*5 ReactQuery
-
-
 --1
 fetch API avec usesEffect(array vide, avec un maj de state, une gestion d'erreurs por la connexion avec un state)
 !! factorisation à faire pour code clean 
@@ -52,8 +40,6 @@ Dans children : index, element sont à remplir: Vrai <> X </> || Faux {X()}
 Wrapper Background & ShadowBg : est ce que les 2 wrappers sont interchangeables d'un point de vue ordre ? 
 =>Ils ne le sont pas car le ShadowBg est là pour la lisibilité du texte en fond clair
 
-?? Nos screen sont situés en-dessous de la Top/NavBar, comment changer la Background entièrement ?
-
 
 -*- TopBar
 position : absolute au lieu de fixed (pour rendre tout l'écran scrollable et non que le layout/screen choisi)
@@ -64,12 +50,6 @@ position : absolute au lieu de fixed (pour rendre tout l'écran scrollable et no
 RQ est une librairie qui permet de gérer les requêtes API, la relance de ses requêtes et le cache pour l'actualisation des données.
 Toutes les données sont init par une fct perso, qui prend une clé et la requête directe (dans la vidéo c'est via axios).
 La requête retourne un status, une error et les données.
-
-?? Pour la clé, on est obligé de [x] et non x. 
-Peut-être qu'on rajoute [x] à la grande liste des clés
-
-??Pour la pagination, utiliser useParams pour récupérer le pageId
-
 
 
 
@@ -82,11 +62,6 @@ les fetch dans un fichier service/api
 *Début du back avec Nest via le skelette pour Login/Register
 Gérer les modules, les controllers en remplaçant fetch classic par axios pour init interceptor(token)
 
-//En remplaçant par Axios chez MangaDetails, erreur au niveau de demographics[0].name
-
-
---Avant Recap 19/05/25
-? Petite question d'ordre sur le Main.tsx
 
 ---
 !! Mettre sur le front le nombre de likes pour chaque manga grâce au traitement effectué dans le back (tt est dans le back)
