@@ -1,4 +1,4 @@
-import './mangaTypePastille.css';
+import '../style/mangaTypePastille.css';
 import {PastilleProps} from './themePastille.tsx'
 
 

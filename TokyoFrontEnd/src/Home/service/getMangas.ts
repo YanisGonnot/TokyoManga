@@ -1,6 +1,6 @@
 //import { Snackbar } from '@mui/material'
 //import {Manga} from '../data/manga'
-import { responseGetAllMangas } from '../data/responseGetAllManga'
+import { responseGetAllMangas } from '../../data/responseGetAllManga'
 import axios from 'axios'
 //import { enqueueSnackbar, SnackbarContent } from 'notistack'
 

@@ -2,16 +2,16 @@ import { useParams } from 'react-router-dom';
 import { useRef} from 'react';
 import { useQuery } from '@tanstack/react-query';
 
-import './MangaInfoScreen.css';
-import '../main.css';
+import '../style/MangaInfoScreen.css';
+import '../../main.css';
 //import { MangaFull } from '../data/responseGetMangaById';
-import starOn from '../assets/mangaDetails/Star_On.png';
-import starOff from '../assets/mangaDetails/Star_Off.png';
+import starOn from '../../assets/mangaDetails/Star_On.png';
+import starOff from '../../assets/mangaDetails/Star_Off.png';
 import ThemePastille from './themePastille';
 import MangaTypePastille from './mangaTypePastille';
 import AuthorCard from './authorCard';
 import StatusCard from './statusCard';
-import { getOneMangaAxios } from '../network/getManga';
+import { getOneMangaAxios } from '../service/getManga';
 
 
 

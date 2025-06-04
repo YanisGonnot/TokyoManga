@@ -1,0 +1,26 @@
+22/05/25: 
+V Post ne fontionne pas car produit l'erreur 'Not Found' au niveau du findByTokenAndManga
+V Revoir Delete
+V Configuer l'interceptor token 
+V Calculer le nb de likes par manga
+- Lier le Front au Back
+
+
+
+?!? GET /likes?mangaIdLt=pageNumber  || GET /likes/:pageNumber
+
+
+Giacomo: Pipeline mongoose plus opti que les filtres en utilisant $in mangaIdArray, pas besoin de faire de loop pour compter les occurences.
+MangaIdArray est crée et reçu par le front, car notre Api manga possède des trous sur les ID.
+
+
+GET /likes?mangaIdString=1,2,3
+(@Query('mangaIdString') mangaIdString: string) {
+  const ids = mangaIdString.split(',');
+  return this.likeService.getLikes(ids);
+}
+
+
+--------------------
+Q: à chaque post/unpost, suis-je obligé d'éxecuter getLikes ?
+Q: Est ce que mongo est stable, lancement difficile (obligé de repair avec l'installateur)

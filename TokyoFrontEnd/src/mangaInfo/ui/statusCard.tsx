@@ -1,4 +1,4 @@
-import './statusCard.css';
+import '../style/statusCard.css';
 
 interface StatusCardProps{
     text: string;

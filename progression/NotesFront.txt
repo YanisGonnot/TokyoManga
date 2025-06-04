@@ -87,3 +87,7 @@ Gérer les modules, les controllers en remplaçant fetch classic par axios pour 
 
 --Avant Recap 19/05/25
 ? Petite question d'ordre sur le Main.tsx
+
+---
+!! Mettre sur le front le nombre de likes pour chaque manga grâce au traitement effectué dans le back (tt est dans le back)
+Attention aux routes (cast ObjectId à cause de la mauvaise route, regarder l'onglet réseau du dom)

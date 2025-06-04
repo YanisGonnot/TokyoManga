@@ -2,8 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 
 import '../main.css'
 
-import HomeScreen from "../Home/Home.tsx";
-import MangaInfoScreen from "../mangaInfo/MangaInfoScreen";
+import HomeScreen from "../Home/ui/Home.tsx";
+import MangaInfoScreen from "../mangaInfo/ui/MangaInfoScreen.tsx";
 import RootLayout from './RootLayout.tsx';
 import Profile from "../auth/ui/profile.tsx";
 import AuthByGiacomo from "../auth/ui/authGiacomo.tsx";

@@ -3,11 +3,39 @@
     flex-direction: column;
     justify-content: center;
     padding: 1dvh;
-   
   }
+
+  .imageWrapper{
+    position: relative;
+    height: 325px;
+  }
+
+  .mangaImage {
+  position: absolute;
+}
 
   .cardImg{
     height: 300px;
+    z-index: 1;
+    top: 25px;
+    right: 25px
+  }
+
+  .likesNumber{
+    display: inline;
+    z-index: 3;
+    top: 0;
+    right: 60px;
+    text-transform: none;
+    font-size: 18px;
+    color: red;
+  }
+
+  .imgLike{
+    z-index: 2;
+    right: 0px;
+    top: 0px;
+    transition: ease-in 0.5;
   }
   
   .cardTitle{

@@ -31,3 +31,8 @@ export type ErrorApiResponse = {
   error: string;
   statusCode: number;
 };
+
+
+export type EditResult = 
+  | { success: true; response: AuthResponseInterface }
+  | { success: false, error: string}

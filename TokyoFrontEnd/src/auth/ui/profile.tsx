@@ -6,7 +6,6 @@ export default function Profile() {
   const { getUser, logout, editUser, isLoading, error } = useAuth();
 
   const user = getUser();
-  console.log(user);
 
   const [userData, setUserData] = useState<AuthFormInterface>({
     email: user.email,

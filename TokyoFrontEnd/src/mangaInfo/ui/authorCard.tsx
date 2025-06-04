@@ -1,4 +1,4 @@
-import './authorCard.css'
+import '../style/authorCard.css'
 
 
 interface AuthorProps{

@@ -1,0 +1,60 @@
+import { Body, Controller, Delete, Param, Get, Post, Query } from '@nestjs/common';
+import { ApiNoContentResponse, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
+import { Protect } from '../auth/_utils/decorator/protect.decorator';
+import { LikeService } from './like.service';
+
+import { ConnectedUser } from './_utils/decorator/connecter-user.decorator';
+import { AddLikeDto } from './_utils/dto/request/add-like.dto';
+import { UserDocument } from 'src/users/users.schema';
+import { GetLikesNumberDto } from './_utils/dto/request/get-likes-number.dto';
+
+@ApiTags('Likes')
+@Controller('likes')
+export class LikeController {
+  constructor(private readonly likeService: LikeService) {}
+
+  @Get()
+  @ApiOperation({ summary: 'Get all likes.' })
+  @ApiNoContentResponse({ description: 'Likes received.' })
+  @ApiOperation({ summary: 'Get all likes' })
+  getAll() {
+    const all = this.likeService.findAll();
+    return all;
+  }
+
+  @Get('/list')
+  @ApiOperation({ summary: 'Get all likes of a manga page.' })
+  @ApiNoContentResponse({ description: 'Likes coupled to mangas.' })
+  @ApiOperation({ summary: 'Get all likes about mangas on the page' })
+  getAllLikesAndMangaIdList(@Query() getLikesNumberDto: GetLikesNumberDto) {
+    return this.likeService.findLikesNumberByMangaId(getLikesNumberDto.mangaIDs);
+  }
+
+  @Protect()
+  @Post(':mangaId/like')
+  @ApiParam({ type: 'number', name: 'mangaId' })
+  @ApiOperation({ summary: 'Like this manga.' })
+  @ApiNoContentResponse({ description: 'Like added.' })
+  addLike(@ConnectedUser() user: UserDocument, @Param('mangaId') mangaId: number, @Body() body: AddLikeDto) {
+    return this.likeService.addLike(user, body, mangaId);
+  }
+
+  @Protect()
+  @Post(':mangaId/remove')
+  @ApiOperation({ summary: 'Remove like from this manga.' })
+  @ApiNoContentResponse({ description: 'Like removed.' })
+  removeLike(@ConnectedUser() user: UserDocument, @Param('mangaId') mangaId: number) {
+    // user comes from the token
+    return this.likeService.removeLike(user, mangaId);
+  }
+
+  @Protect()
+  @Delete(':mangaId/unlike')
+  @ApiParam({ type: 'string', name: 'mangaId' })
+  @ApiOperation({ summary: 'Delete like from this manga.' })
+  @ApiNoContentResponse({ description: 'Like deleted.' })
+  deleteLike(@ConnectedUser() user: UserDocument, @Param('mangaId') mangaId: number) {
+    // user comes from the token
+    return this.likeService.deleteLike(user, mangaId);
+  }
+}

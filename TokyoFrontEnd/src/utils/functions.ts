@@ -8,6 +8,11 @@ export default function range(start: number, end: number, step: number = 1): num
   return result;
 }
 
+export function removeCharAt(str: string, index: number): string {
+  return str.slice(0, index) + str.slice(index + 1);
+}
+
+
 
 export const checkFormAuth = (email: string, password: string, lastname?: string, firstname?: string) => {
   let res: boolean;

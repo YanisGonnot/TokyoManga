@@ -84,7 +84,6 @@ export const useAuth = () => {
     setError("");
     setSuccess(false);
     const reEdit = await editAxios(formData);
-    console.log("reEdit: "+ reEdit);
 
     if (reEdit.success){
       setSuccess(true);

@@ -15,7 +15,7 @@ function Page({ pageNumber, totalMangas, countMangaOnPage, setPageNumber, hasNex
 
     const firstIdMangaOnPage = (pageNumber == 1) ? pageNumber : countMangaOnPage * (pageNumber - 1) + 1;
     const lastIdMangaOnPage = countMangaOnPage * pageNumber;
-    var setPage : () => void;
+    let setPage : () => void;
 
     return (
         <div className="pageSection">
