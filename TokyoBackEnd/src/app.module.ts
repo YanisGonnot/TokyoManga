@@ -8,6 +8,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { EnvironmentVariables, validateEnv } from './_utils/config/env.config';
 import { NodemailerModule } from './nodemailer/nodemailer.module';
 import { LikeModule } from './like/like.module';
+import { CommentModule } from './comments/comment.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { LikeModule } from './like/like.module';
     AuthModule,
     UsersModule,
     LikeModule,
+    CommentModule,
     NodemailerModule,
   ],
   controllers: [AppController],
