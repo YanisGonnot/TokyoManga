@@ -18,6 +18,6 @@ import { UsersService } from './users.service';
   ],
   providers: [UsersService, UsersRepository, UsersMapper, UserExistsRule, UniqueExistsConstraint],
   controllers: [UsersController],
-  exports: [UsersService, UsersRepository],
+  exports: [UsersService, UsersRepository, UsersMapper],
 })
 export class UsersModule {}
