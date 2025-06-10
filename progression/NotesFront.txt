@@ -66,3 +66,13 @@ Gérer les modules, les controllers en remplaçant fetch classic par axios pour 
 ---
 !! Mettre sur le front le nombre de likes pour chaque manga grâce au traitement effectué dans le back (tt est dans le back)
 Attention aux routes (cast ObjectId à cause de la mauvaise route, regarder l'onglet réseau du dom)
+
+
+
+------------
+Q: Est ce normal que le fond d'écran charge très lentement pour MangaInfoScreen ?
+R: Non, mais pq ?
+
+
+------
+A FRAIRE: MangaInfoScreen: réhausser la partie droite du screen !

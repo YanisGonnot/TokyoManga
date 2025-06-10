@@ -21,7 +21,7 @@ function MangaCard({ id, title, imgUrl, imgLike, setLike, likesNumber  }: CardPr
         <div className='imageWrapper'>
           <img className="mangaImage imgLike" src={imgLike} width={50} height={50} onClick={setLike} />
           <h5 className='mangaImage likesNumber'> {likesNumber}</h5> 
-          <NavLink to={`/manga/${id}`}>
+          <NavLink to={`/manga/${id}`} state={imgUrl}>
             <img className="mangaImage cardImg" src={imgUrl} />   
           </NavLink>
         </div>

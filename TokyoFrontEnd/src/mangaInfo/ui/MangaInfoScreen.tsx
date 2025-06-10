@@ -1,5 +1,5 @@
-import { useParams } from 'react-router-dom';
-import { useRef} from 'react';
+import { NavLink, useLocation, useParams } from 'react-router-dom';
+import { useRef, useState} from 'react';
 import { useQuery } from '@tanstack/react-query';
 
 import '../style/MangaInfoScreen.css';
@@ -18,22 +18,10 @@ import { getOneMangaAxios } from '../service/getManga';
 const MangaInfoScreen = () => {
 
     const mangaId = useParams().id;
-    //const [mangaObj, setMangaObj] = useState<MangaFull>();
+    const location = useLocation();
+    const backImageState = location.state;
 
-    /*
-    useEffect(() => {
-        fetch(`https://api.jikan.moe/v4/manga/${mangaId}/full`)
-            .then((response) => response)
-            .then((body) => body.json())
-            .then((bodyJSON) => {
-                setMangaObj(bodyJSON.data);
-            })
-            .catch((error) => {
-                console.error('There was a problem with the fetch operation:', error);
-            })
-    }, [mangaId]);
-    */
-
+    
     const {status, error, data: mangaObj} = useQuery({
         queryKey: ["manga", mangaId], 
         queryFn: () => getOneMangaAxios(mangaId!),
@@ -58,7 +46,7 @@ const MangaInfoScreen = () => {
         backgroundImageRef.current.style.backgroundImage = `url(${mangaObj.images.webp.large_image_url})`;
         backgroundImageRef.current.style.backgroundSize = 'cover';
         backgroundImageRef.current.style.height = '100dvh';
-        //backgroundImageRef.current.style.position = 'fixed';
+        
     }
 
     let synopsisText = "";
@@ -131,7 +119,13 @@ const MangaInfoScreen = () => {
     else {
         return (
             <>
-                <div className='bgImageWrapper' ref={backgroundImageRef}>
+                <div className='bgImageWrapper' style={{ 
+                    backgroundImage:`url(${backImageState})`,
+                    backgroundSize: '30%', 
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPositionX: 'center'
+                }}
+>
                     <div className='shadowBgWrapper'>
                         <div className='mangaInfoLayout'>
                             <div className='mangaResume'>
@@ -143,8 +137,14 @@ const MangaInfoScreen = () => {
                                 <p className='mangaSynopsis'>
                                     {synopsisText}
                                 </p>
+
+                                <NavLink to={`/manga/${mangaId}/reviews`} state={ mangaObj?.images?.webp.large_image_url }>
+                                    <button className='Reviews'>
+                                        Read & Write Reviews
+                                    </button>
+                                </NavLink>
                             </div>
-    
+
                             <div className='mangaInfos'>
                                 <h3 className='titles'> Type & Themes: </h3>
                                 <div className='typeAndThemes'>

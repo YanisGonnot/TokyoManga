@@ -1,0 +1,118 @@
+.reviewContainer{
+    background-color: rgb(255, 255, 255);
+}
+
+.reviewsWrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100dvh;
+}
+
+.reviewInnerWrapper > p {
+    align-self: self-start;
+}
+
+
+.messageWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    color: black;
+}
+
+.reviewInnerWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.review {
+    display: flex;
+    flex-direction: row;
+    padding: 2dvh;
+    border-radius: 10px;
+    margin: 1dvh;
+    color: black;
+
+}
+
+
+.reviewImg{
+    width: 15dvh;
+    padding: 2dvh;
+}
+
+.reviewUser {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3dvh;
+}
+
+.reviewInfo {
+    align-self:self-start ;
+}
+
+.noMaxLines{
+    font-size: 0.8rem;
+    line-height: 1.8em;
+    width: 90%;
+
+}
+
+.maxLines{
+    --fade-size: 2.5rem;
+    font-size: 0.8rem;
+    mask-image: linear-gradient(to bottom, #000 calc(100% - var(--fade-size)), #0000);
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-height: 15em;
+    line-height: 1.8em;
+    width: 90%;
+}
+
+div.hr {
+    border-bottom: 1px solid #000000;
+    width: 80%;
+    align-self: self-start;
+}
+
+.reviewUpperContent{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.reviewScore {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    padding: 4dvh;
+    padding-inline: 8dvh;
+}
+
+.reviewBottomContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.reviewReactions{
+    display: flex;
+    flex-direction: row;
+    padding: 4dvh;
+    padding-inline: 8dvh;
+}
+
+.reviewReactions > p {
+    padding: 1dvh;
+}
+
+.reviewReactions > p:first-child{
+    align-self: self-start;
+}

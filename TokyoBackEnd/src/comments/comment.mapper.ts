@@ -7,22 +7,6 @@ import { CommentWithUserDto } from './_utils/comment-with-user-dto';
 
 @Injectable()
 export class CommentMapper {
-
-    /* Obsolète
-    toGetCommentDto = (comment: CommentDocument): GetCommentDto => ({
-        id: comment._id.toString(),
-        user_firstname: "comment",
-        user_lastname: "comment",
-        manga_id: comment.manga_id,
-        title: comment.title,
-        message: comment.message
-    })
- 
-
-    toGetCommentsDto = (comments: CommentDocument[]) : GetCommentDto[] => 
-        comments.map(comment => this.toGetCommentDto(comment))
-    */
-
     toGetCommentWithUserDto = (user: UserDocument, comment: CommentDocument) => ({
         id: comment._id.toString(),
         user_firstname: user.firstname,

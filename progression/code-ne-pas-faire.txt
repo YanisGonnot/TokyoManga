@@ -1,0 +1,17 @@
+// Code tout imbriqué (mauvais en cas de relecture ou d'un nouveau dev sur le code)
+//Partie Nest: comment.service.ts
+getComments = async (mangaId: number) => {
+    return this.commentRepository.findCommentsByManga(mangaId)
+      .then(async (comments) => {
+        let commentsWithUsers : CommentWithUserDto[] = [];
+        commentsWithUsers = await Promise.all(comments.map(async comment => {
+          const user = await this.userRepository.findOneById(comment.user_id.toString());
+          return ({
+            infoComment: comment,
+            infoUser: user!
+          })
+        }));
+
+        return this.commentMapper.toGetCommentsWithUsersDto(commentsWithUsers);
+    })
+}
