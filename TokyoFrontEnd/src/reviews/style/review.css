@@ -1,17 +1,8 @@
-.reviewContainer{
-    background-color: rgb(255, 255, 255);
-}
-
 .reviewsWrapper{
     display: flex;
     flex-direction: column;
     height: 100dvh;
 }
-
-.reviewInnerWrapper > p {
-    align-self: self-start;
-}
-
 
 .messageWrapper{
     display: flex;
@@ -21,11 +12,13 @@
     color: black;
 }
 
-.reviewInnerWrapper{
-    display: flex;
-    flex-direction: column;
-    align-items: end;
+.reviewContainer {
+    margin-left: 50px;
+    color: #000;
+    font-size: 25px;
+    font-weight: bold;
 }
+
 
 .review {
     display: flex;
@@ -34,14 +27,28 @@
     border-radius: 10px;
     margin: 1dvh;
     color: black;
-
 }
 
 
+.reviewInnerWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    font-size: medium;
+}
+
+
+.reviewInnerWrapper > p {
+    align-self: self-start;
+}
+
+
+/*
 .reviewImg{
     width: 15dvh;
     padding: 2dvh;
 }
+
 
 .reviewUser {
     flex-direction: column;
@@ -49,34 +56,16 @@
     align-items: center;
     padding: 3dvh;
 }
+*/
 
 .reviewInfo {
     align-self:self-start ;
+    font-weight: normal;
 }
 
-.noMaxLines{
-    font-size: 0.8rem;
-    line-height: 1.8em;
-    width: 90%;
 
-}
-
-.maxLines{
-    --fade-size: 2.5rem;
-    font-size: 0.8rem;
-    mask-image: linear-gradient(to bottom, #000 calc(100% - var(--fade-size)), #0000);
-    display: block;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    max-height: 15em;
-    line-height: 1.8em;
-    width: 90%;
-}
-
-div.hr {
-    border-bottom: 1px solid #000000;
-    width: 80%;
-    align-self: self-start;
+.rereviewInfo > h2 {
+    font-weight: normal;
 }
 
 .reviewUpperContent{
@@ -86,13 +75,24 @@ div.hr {
     justify-content: space-between;
 }
 
-.reviewScore {
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
-    padding: 4dvh;
-    padding-inline: 8dvh;
+.reviewUpperContent > p {
+    font-size: 18px;
 }
+
+.noMaxLines{
+    line-height: 1.8em;
+}
+
+.maxLines{
+    --fade-size: 2.5rem;
+    mask-image: linear-gradient(to bottom, #000 calc(100% - var(--fade-size)), #0000);
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-height: 15em;
+    line-height: 1.8em;
+}
+
 
 .reviewBottomContent {
     display: flex;
@@ -100,6 +100,24 @@ div.hr {
     align-items: center;
     justify-content: space-between;
     width: 100%;
+}
+
+
+div.hr {
+    border-bottom: 1px solid #000000;
+    width: 80%;
+    align-self: self-start;
+}
+
+
+
+/*
+.reviewScore {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    padding: 4dvh;
+    padding-inline: 8dvh;
 }
 
 .reviewReactions{
@@ -116,3 +134,4 @@ div.hr {
 .reviewReactions > p:first-child{
     align-self: self-start;
 }
+*/

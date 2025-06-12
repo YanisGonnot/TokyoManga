@@ -1,6 +1,7 @@
 export interface IReview {
-    user: string ; 
-    date : {
+    userFirstname: string ;
+    userLastname: string ; 
+    date? : {
         createdAt: Date;
         updatedAt: Date
     };

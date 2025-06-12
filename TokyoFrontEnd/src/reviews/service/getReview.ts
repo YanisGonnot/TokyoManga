@@ -6,10 +6,11 @@ import { data } from "react-router-dom";
 export const getMangaReviews = (mangaId: string) => {
     return axiosConfig.get(`/comments/${mangaId}/comment`)
         .then((response) => response)
-        .then((body) => body.data as responseGetReviews)      
+        .then((body) => body.data as responseGetReviews[])      
 }
 
 
+/*
 export const postMangaReview = (post : PostReview) => {
     return axiosConfig.post(
         `/comments/${post.mangaId}/comment`,
@@ -22,3 +23,4 @@ export const postMangaReview = (post : PostReview) => {
     .then((response) => response)        
     .then((body) => body.data as responsePostReview)  
 }
+*/

@@ -7,7 +7,7 @@ import '../style/review.css';
 
 
 
-function ReviewItem({user, date, message, title } : IReview){
+function ReviewItem({userFirstname, userLastname, date, message, title } : IReview){
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -15,6 +15,7 @@ function ReviewItem({user, date, message, title } : IReview){
         setIsOpen(!isOpen);
     }
 
+    const intro = ` Written by ${userFirstname} ${userLastname}`
 
 
     return ( 
@@ -24,9 +25,9 @@ function ReviewItem({user, date, message, title } : IReview){
                     <div className="reviewInfo" >
                         <div className="reviewUpperContent">
                             <div>
-                                <h2>{user}</h2>
-                                <h5> on {date.createdAt.getDate()} </h5>
-                                <h5> on {date.updatedAt.getDate()}</h5>
+                                <h2> {intro} </h2>
+                                {date && <h5> on {date.createdAt.getDate()} </h5>}
+                                {date && <h5> on {date.updatedAt.getDate()} </h5>}
                             </div>
                         </div>
                         <h2> {title}</h2>

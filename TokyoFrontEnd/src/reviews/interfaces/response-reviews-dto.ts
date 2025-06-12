@@ -1,5 +1,10 @@
 export interface responseGetReviews {
-    
+    id: string;
+    userFirstname: string;
+    userLastname: string;
+    mangaId: string;
+    title: string;
+    message: string;  
 }
 
 
