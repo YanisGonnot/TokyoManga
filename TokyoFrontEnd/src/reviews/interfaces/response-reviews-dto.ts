@@ -1,4 +1,4 @@
-export interface responseGetReviews {
+export interface responseGetReviewsInternal {
     id: string;
     userFirstname: string;
     userLastname: string;

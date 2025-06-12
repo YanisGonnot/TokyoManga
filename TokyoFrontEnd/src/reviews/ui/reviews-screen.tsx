@@ -22,6 +22,10 @@ const ReviewsScreen = () => {
             placeholderData: keepPreviousData,
         });
 
+    /* utilisation d'un hook personnalisé pour récupérer les commentaires de l'API Externe, puis pour fusionner 
+        ts les commentaires internes & externes
+    */
+
     return (
         <>
             <div className='reviewsWrapper'
