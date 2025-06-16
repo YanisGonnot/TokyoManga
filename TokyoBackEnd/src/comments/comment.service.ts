@@ -19,7 +19,7 @@ export class CommentService {
   constructor(
     private readonly commentRepository: CommentRepository,
     private readonly commentMapper: CommentMapper,
-    private readonly userRepository : UsersRepository,
+    private readonly userRepository: UsersRepository,
     private readonly userMapper: UsersMapper
   ) { }
 
@@ -39,34 +39,35 @@ export class CommentService {
 
 
   getComments = async (mangaId: number) => {
-    const comments = await this.commentRepository.findCommentsByManga(mangaId);
+    try {
+      const comments = await this.commentRepository.findCommentsByManga(mangaId);
 
-    // On résout toutes les promesses de mapping avec Promise.all
-    const commentsWithUsers : CommentWithUserDto[] = await Promise.all(
-      comments.map(async comment => {
-        const user = await this.userRepository.findOneById(comment.user_id.toString());
-        return {
-          infoComment: comment,
-          infoUser: user!
-        };
-      })
-    );
+      // On résout toutes les promesses de mapping avec Promise.all
+      const commentsWithUsers: CommentWithUserDto[] = await Promise.all(
+        comments.map(async comment => {
+          const user = await this.userRepository.findOneById(comment.user_id.toString());
+          return {
+            infoComment: comment,
+            infoUser: user!
+          };
+        })
+      );
 
-    // Une fois toutes les promesses résolues, on les envoie au mapper
-    return this.commentMapper.toGetCommentsWithUsersDto(commentsWithUsers);
-    
-
-    
-    
+      // Une fois toutes les promesses résolues, on les envoie au mapper
+      return this.commentMapper.toGetCommentsWithUsersDto(commentsWithUsers);
+    }
+    catch(error: any) {
+      return [];
+    }
   }
 
 
   deleteComment = async (user: UserDocument, comment: CommentDocument) => {
-    if (comment.user_id.toString() === user._id.toString()){
-      return this.commentRepository.delete(comment);
-    }
-    else {
-      return this.commentRepository.deleteCommentNotAuthorized.message;
+      if (comment.user_id.toString() === user._id.toString()) {
+        return this.commentRepository.delete(comment);
+      }
+      else {
+        return this.commentRepository.deleteCommentNotAuthorized.message;
+      }
     }
   }
-}

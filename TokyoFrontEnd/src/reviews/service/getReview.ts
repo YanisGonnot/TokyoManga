@@ -1,8 +1,7 @@
-import { axiosConfig } from "../../network/axiosConfig";
-import { responseGetReviewsInternal, responsePostReview } from "../interfaces/response-reviews-dto";
-import { PostReview } from "../interfaces/request-review-dto";
-import { data } from "react-router-dom";
 import axios from "axios";
+
+import { axiosConfig } from "../../network/axiosConfig";
+import { responseGetReviewsInternal } from "../interfaces/response-reviews-dto";
 import { handleRequestErrors } from "../../utils/errorHandler";
 import { ResponseGetReviewsExternal } from "../interfaces/response-review-external-dto";
 

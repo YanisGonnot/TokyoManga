@@ -4,7 +4,7 @@ export interface ResponseGetReviewsExternal {
 }
 
 export interface ReviewExternal {
-  user: Record<string, any>; // ou mieux : User si tu as un modèle
+  user: UserReview;
   mal_id: number;
   url: string;
   type: string;

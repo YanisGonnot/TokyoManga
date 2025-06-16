@@ -1,68 +1,87 @@
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
 import { useSnackbar } from "notistack";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import '../style/review.css';
-import { getMangaReviews } from "../service/getReview";
-import ReviewItem from "./review-item";
+import { getMangaAPIReviews, getMangaReviews } from "../service/getReview";
+import {ExternalReviewItem, InternalReviewItem} from "./review-item";
 
 
 const ReviewsScreen = () => {
 
-    const { enqueueSnackbar } = useSnackbar()
-    const mangaId = useParams().id;
+    const {enqueueSnackbar} = useSnackbar()
+    const mangaId = useParams().id
 
-    const location = useLocation();
-    const imageReview = location.state;
+    const { isPending: isPendingExternalReview, isError : isErrorExternalReview, 
+        error : errorExternalReview, data : dataExternalReview } 
+        = useQuery({
+            queryKey: ['mangaExternalReview', mangaId], 
+            queryFn: () => getMangaAPIReviews(mangaId!),
+            placeholderData: keepPreviousData,
+        })
 
-    const { isPending, isError, error, data } =
-        useQuery({
-            queryKey: ['mangaReview', mangaId],
+    const { isPending : isPendingInternalReview, isError: isErrorInternalReview,
+        error: errorInternalReview, data : dataInternalReview}
+        = useQuery({
+            queryKey: ['mangaInternalReview', mangaId], 
             queryFn: () => getMangaReviews(mangaId!),
             placeholderData: keepPreviousData,
         });
+            
 
-    /* utilisation d'un hook personnalisé pour récupérer les commentaires de l'API Externe, puis pour fusionner 
-        ts les commentaires internes & externes
-    */
 
     return (
         <>
-            <div className='reviewsWrapper'
-            /*
-                style={{
-                    backgroundImage: `url(${imageReview})`,
-                    backgroundSize: 'contain',
-                    backgroundRepeat: 'auto'
-
-                }}
-            */
-            >
+            <div className='reviewsWrapper'>
                 <div className="messageWrapper">
-                    {!data && !isPending && <h3>Sorry 😕 , we couldn't find any review for this manga</h3>}
-                    {isPending && <h2>loading...</h2>}
-                    {isError && <h2> error </h2>}
-                    {isError && enqueueSnackbar(error)}
+                    { !dataExternalReview && !isPendingExternalReview 
+                        && <h3>Sorry 😕 , we couldn't find any review for this manga </h3>  
+                    }
+                    { isPendingExternalReview && <h2>loading...</h2>}
+                    { isErrorExternalReview && <h2> error </h2>}
+                    { isErrorExternalReview && enqueueSnackbar(errorExternalReview)}
+                    { dataExternalReview?.data.length === 0 && <h3> No comments on this comment's page </h3>}
                 </div>
-                
                 <div className="reviewContainer">
-                    {`${data?.length} Reviews`}
-                    <div>
-                        {
-                            data?.map(
+                    { 
+                        dataExternalReview?.data?.map(
+                            (review) =>
+                            <ExternalReviewItem 
+                                key={review.mal_id}
+                                reactions={review.reactions} 
+                                date={review.date} 
+                                review={review.review} 
+                                score={review.score} 
+                                user={review.user}   
+                            />
+                        )
+                    }
+                </div>
+                <br></br>
+                <div className="messageWrapper">
+                    { !dataInternalReview && !isPendingInternalReview 
+                        && <h3>Sorry 😕 , we couldn't find any review for this manga </h3>  
+                    }
+                    { isPendingInternalReview && <h2>loading...</h2>}
+                    { isErrorInternalReview && <h2> errorInternalReview </h2>}
+                    { isErrorInternalReview && enqueueSnackbar(errorInternalReview)}
+                    { dataInternalReview?.length === 0 && <h3> No comments for this manga </h3>}
+                </div>
+                <div className="reviewContainer">
+                    {
+                        dataInternalReview?.map(
                                 (review) =>
-                                    <ReviewItem
+                                    <InternalReviewItem
                                         key={review.id}
                                         //date={createdAt: review.createdAt, updatedAt: review.updatedAt}
                                         message={review.message}
                                         title={review.title}
-                                        userFirstname={review.userFirstname}
-                                        userLastname={review.userLastname}
+                                        userFirstname={review.user_firstname}
+                                        userLastname={review.user_lastname}
                                     />
-                            )
-                        }
-                    </div>
-                </div>
+                        )
+                    }
+                </div>         
             </div>
         </>
     )

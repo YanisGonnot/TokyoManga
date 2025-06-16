@@ -1,8 +1,8 @@
 export interface responseGetReviewsInternal {
     id: string;
-    userFirstname: string;
-    userLastname: string;
-    mangaId: string;
+    user_firstname: string;
+    user_lastname: string;
+    manga_id: string;
     title: string;
     message: string;  
 }
