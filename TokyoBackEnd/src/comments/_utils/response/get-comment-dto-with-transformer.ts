@@ -1,5 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Expose, Transform } from "class-transformer";
+import { Reactions } from "../reactions-comment-dto";
 
 
 export class GetCommentDtoWithClassTranformer {
@@ -36,4 +37,12 @@ export class GetCommentDtoWithClassTranformer {
     @Transform(({ value }) => value.toLocaleDateString('fr-FR'))
     @ApiProperty({ type: String, format: 'date-time' })
     updatedAt: string;
+
+    @Expose()
+    @ApiProperty()
+    score: number;
+
+    @Expose()
+    @ApiProperty()
+    reactions: Reactions;
 }

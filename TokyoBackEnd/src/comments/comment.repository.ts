@@ -54,7 +54,9 @@ export class CommentRepository {
         user_id: userId,
         manga_id: newComment.mangaId,
         title: newComment.title,
-        message: newComment.message
+        message: newComment.message,
+        score: newComment.score,
+        reactions: newComment.reactions
       });
 
 
@@ -63,7 +65,9 @@ export class CommentRepository {
       this.model.findByIdAndUpdate(
         comment._id, {
           title: updateComment.title,
-          message: updateComment.message
+          message: updateComment.message,
+          score: updateComment.score,
+          reactions: updateComment.reactions
         }
       ).exec()    
 

@@ -1,5 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { Date } from "mongoose";
+import { Reactions } from "../reactions-comment-dto";
 
 export class GetCommentDto {
     @ApiProperty()
@@ -25,4 +26,10 @@ export class GetCommentDto {
 
     @ApiProperty({ type: String, format: 'date-time' })
     updatedAt: Date;
+
+    @ApiProperty()
+    score: number;
+
+    @ApiProperty()
+    reactions: Reactions;
 }

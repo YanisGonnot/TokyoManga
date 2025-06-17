@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument, ObjectId, Types } from 'mongoose';
+import { defaultReactions, Reactions } from './_utils/reactions-comment-dto';
 
 
 export type CommentDocument = HydratedDocument<Comment>;
@@ -17,6 +18,12 @@ export class Comment {
 
   @Prop({required: true})
   title: string;
+
+  @Prop({type: Number, default: undefined})
+  score: number | undefined;
+
+  @Prop({default: defaultReactions})
+  reactions: Reactions;
 }
 
 export const CommentSchema = SchemaFactory.createForClass(Comment);

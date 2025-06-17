@@ -32,7 +32,7 @@ export class CommentService {
     catch (error: any) {
       return this.commentRepository
         .postComment(user.id!, bodyComment)
-        .then((newComment) => this.commentMapper.toGetCommentWithUserDto(user, newComment));
+        .then((newComment) => this.commentMapper.toGetCommentWithClassTransformer(user, newComment));
     }
   }
 

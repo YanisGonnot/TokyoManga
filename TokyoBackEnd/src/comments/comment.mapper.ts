@@ -5,6 +5,7 @@ import { UserDocument } from 'src/users/users.schema';
 import { CommentWithUserDto } from './_utils/comment-with-user-dto';
 import { GetCommentDtoWithClassTranformer } from './_utils/response/get-comment-dto-with-transformer';
 import { plainToInstance } from 'class-transformer';
+import { defaultReactions, Reactions } from './_utils/reactions-comment-dto';
 
 
 @Injectable()
@@ -17,7 +18,9 @@ export class CommentMapper {
         title: comment.title,
         message: comment.message,
         createdAt: comment.get('createdAt'),
-        updatedAt: comment.get('updatedAt')
+        updatedAt: comment.get('updatedAt'),
+        score: comment.score ?? 0,
+        reactions: comment.reactions ?? defaultReactions
     })
 
 
@@ -30,7 +33,9 @@ export class CommentMapper {
             title: commentAndUser.infoComment.title,
             message: commentAndUser.infoComment.message,
             createdAt: commentAndUser.infoComment.get('createdAt'),
-            updatedAt: commentAndUser.infoComment.get('updatedAt')
+            updatedAt: commentAndUser.infoComment.get('updatedAt'),
+            score: commentAndUser.infoComment.score ?? 0,
+            reactions: commentAndUser.infoComment.reactions
         }));
 
 
@@ -43,7 +48,9 @@ export class CommentMapper {
             title: comment.title,
             message: comment.message,
             createdAt: comment.get('createdAt'),
-            updatedAt: comment.get('updatedAt')
+            updatedAt: comment.get('updatedAt'),
+            score: comment.score ?? 0,
+            reactions: comment.reactions
         });
 
 
@@ -56,9 +63,10 @@ export class CommentMapper {
             title: commentAndUser.infoComment.title,
             message: commentAndUser.infoComment.message,
             createdAt: commentAndUser.infoComment.get('createdAt'),
-            updatedAt: commentAndUser.infoComment.get('updatedAt')
+            updatedAt: commentAndUser.infoComment.get('updatedAt'),
+            score: commentAndUser.infoComment.score ?? 0,
+            reactions: commentAndUser.infoComment.reactions
         }));
-        console.log("List", list)
         return plainToInstance(GetCommentDtoWithClassTranformer, list);
     }
 }
