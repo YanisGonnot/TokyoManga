@@ -16,3 +16,6 @@ Récupérer tous les commentaires d'un manga consiste à les prendre du Repo pou
 Mais il nous manque les infos des users, ainsi on les récupère à partir de la propriété user_id de chaque comment.
 Pour que notre objet [{comment, user}] soit correctement défini avec ses valeurs et non typé Promise, 
     il faut attendre que toutes les Promesses soient effectuées avec await Promise.all()
+
+---------------------------------------
+Transfomer les méthodes des mapper via des class-transformer avec les annotations @Expose @Transform @Exclude

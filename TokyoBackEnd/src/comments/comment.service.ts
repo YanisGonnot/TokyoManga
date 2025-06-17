@@ -19,8 +19,7 @@ export class CommentService {
   constructor(
     private readonly commentRepository: CommentRepository,
     private readonly commentMapper: CommentMapper,
-    private readonly userRepository: UsersRepository,
-    private readonly userMapper: UsersMapper
+    private readonly userRepository: UsersRepository
   ) { }
 
 
@@ -54,9 +53,10 @@ export class CommentService {
       );
 
       // Une fois toutes les promesses résolues, on les envoie au mapper
-      return this.commentMapper.toGetCommentsWithUsersDto(commentsWithUsers);
+      return this.commentMapper.toGetCommentsArrayWithClassTransformer(commentsWithUsers);
     }
     catch(error: any) {
+      console.log(error.message);
       return [];
     }
   }

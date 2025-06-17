@@ -1,17 +1,18 @@
 import { ApiProperty } from "@nestjs/swagger";
+import { Date } from "mongoose";
 
 export class GetCommentDto {
     @ApiProperty()
     id: string;
 
     @ApiProperty()
-    user_firstname: string;
+    userFirstname: string;
 
     @ApiProperty()
-    user_lastname: string;
+    userLastname: string;
 
     @ApiProperty()
-    manga_id: string;
+    mangaId: string;
 
     @ApiProperty()
     title: string;
@@ -19,4 +20,9 @@ export class GetCommentDto {
     @ApiProperty()
     message: string;
 
+    @ApiProperty({ type: String, format: 'date-time' })
+    createdAt: Date;
+
+    @ApiProperty({ type: String, format: 'date-time' })
+    updatedAt: Date;
 }
