@@ -8,7 +8,7 @@ import { ResponseGetReviewsExternal } from "../interfaces/response-review-extern
 export const getMangaReviews = (mangaId: string) => {
     return axiosConfig.get(`/comments/${mangaId}/comment`)
         .then((response) => response)
-        .then((body) => body.data as responseGetReviewsInternal[])      
+        .then((body) => body.data as responseGetReviewsInternal[]);
 }
 
 

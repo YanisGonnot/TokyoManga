@@ -29,12 +29,12 @@ export class GetCommentDtoWithClassTranformer {
     message: string;
 
     @Expose()
-    @Transform(({ value }) => value.toLocaleDateString('fr-FR'))
+    //@Transform(({ value }) => value.toLocaleDateString('fr-FR'))
     @ApiProperty({ type: String, format: 'date-time' })
     createdAt: string;
 
     @Expose()
-    @Transform(({ value }) => value.toLocaleDateString('fr-FR'))
+    //@Transform(({ value }) => value.toLocaleDateString('fr-FR'))
     @ApiProperty({ type: String, format: 'date-time' })
     updatedAt: string;
 

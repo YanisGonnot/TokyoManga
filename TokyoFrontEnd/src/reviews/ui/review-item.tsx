@@ -56,7 +56,7 @@ export const ExternalReviewItem = ({user, reactions, date, review, score } : Ext
 export const InternalReviewItem = ({title, message, createdAt, updatedAt, userFirstname, userLastname, score, reactions } : InternalReviewProps ) => {
 
     const intro = ` Written by ${userFirstname} ${userLastname}`;
-    console.log(intro);
+    //console.log(intro);
 
      const [isOpen, setIsOpen] = useState(false);
 
@@ -72,8 +72,8 @@ export const InternalReviewItem = ({title, message, createdAt, updatedAt, userFi
                         <div className="reviewUpperContent">
                             <div>
                                 <h2> {intro} </h2>
-                                {createdAt && <h5> on {createdAt} </h5>}
-                                {updatedAt && <h5> on {updatedAt} </h5>}
+                                {createdAt && <h5> created on {createdAt.substring(0,10)} </h5>}
+                                {updatedAt && <h5> updated on {updatedAt.substring(0,10)} </h5>}
                             </div>
                             <div className="reviewScore">
                                 <h2>score: { score } { checkScore(score) }</h2>
