@@ -29,6 +29,7 @@ const ReviewsScreen = () => {
             placeholderData: keepPreviousData,
         });
    
+
     return (
         <>
             <div className='reviewsWrapper'>
@@ -68,8 +69,7 @@ const ReviewsScreen = () => {
                 </div>
                 <div className="reviewContainer">
                     {
-                        Array.isArray(dataInternalReview) && (
-                            dataInternalReview?.map(
+                        dataInternalReview?.map(
                                 (review) =>
                                     <InternalReviewItem
                                         key={review.id}
@@ -82,7 +82,7 @@ const ReviewsScreen = () => {
                                         score={review.score}
                                         reactions={review.reactions}
                                     />
-                            ))
+                        )
                     }
                 </div>
             </div>
