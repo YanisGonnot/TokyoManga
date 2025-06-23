@@ -3,12 +3,12 @@ import { Reactions, UserReview } from "./response-review-external-dto";
 export interface InternalReviewProps {
     userFirstname: string;
     userLastname: string;
-    date?: {
-        createdAt: Date;
-        updatedAt: Date
-    };
+    createdAt: string;
+    updatedAt: string;
     message: string;
-    title: string
+    title: string;
+    score: number;
+    reactions: Reactions;
 }
 
 export interface ExternalReviewProps {

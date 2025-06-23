@@ -27,8 +27,6 @@ const ReviewsScreen = () => {
             queryFn: () => getMangaReviews(mangaId!),
             placeholderData: keepPreviousData,
         });
-            
-
 
     return (
         <>
@@ -73,11 +71,14 @@ const ReviewsScreen = () => {
                                 (review) =>
                                     <InternalReviewItem
                                         key={review.id}
-                                        //date={createdAt: review.createdAt, updatedAt: review.updatedAt}
+                                        createdAt={review.createdAt}
+                                        updatedAt={review.updatedAt}
                                         message={review.message}
                                         title={review.title}
                                         userFirstname={review.user_firstname}
                                         userLastname={review.user_lastname}
+                                        score={review.score}
+                                        reactions={review.reactions}
                                     />
                         )
                     }
